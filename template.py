@@ -3,7 +3,8 @@ from pathlib import Path
 import logging
 
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s]: %(message)s:')
-
+# logging is a function from Python’s logging module used to set up the basic configuration for logging.
+# By setting level=logging.INFO, only log messages with a level of INFO and above (i.e., INFO, WARNING, ERROR, CRITICAL) will be displayed. Lower-severity messages like DEBUG will be ignored.
 
 project_name = "cnnClassifier"
 
