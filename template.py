@@ -25,8 +25,6 @@ list_of_files = [
     "setup.py",
     "research/trials.ipynb",
     "templates/index.html"
-
-
 ]
 
 
@@ -35,9 +33,8 @@ for filepath in list_of_files:
     filepath = Path(filepath)
     filedir, filename = os.path.split(filepath)
 
-
     if filedir !="":
-        os.makedirs(filedir, exist_ok=True)
+        os.makedirs(filedir, exist_ok=True) # if parents do not exist they will be created.
         logging.info(f"Creating directory; {filedir} for the file: {filename}")
 
     if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):

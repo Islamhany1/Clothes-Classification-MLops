@@ -1,0 +1,2 @@
+# When you run setup.py to install your package (especially in editable mode), setup.py identifies which directories should be treated as packages. If a directory contains an __init__.py file, it will be included in the installation as a package.
+# This means that setup.py relies on __init__.py to define the structure of your package and determine what will be available for import when users install your package.
