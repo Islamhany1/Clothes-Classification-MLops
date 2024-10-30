@@ -14,7 +14,6 @@ class DataIngestionTrainingPipeline:
     def main(self):
         # create data ingestion config.
         config_file_path = Path(Path.cwd() / 'config/config.yaml')
-        params_file_path = Path(Path.cwd() / 'params.yaml')
         data_config_box = read_yaml(config_file_path)
 
         create_directories([data_config_box.artifacts_root])
@@ -29,8 +28,9 @@ class DataIngestionTrainingPipeline:
         # call data ingestion methods.
         base_dir = Path(Path.cwd() / 'artifacts/data_ingestion/dataset')
 
-        data_ingestion.download_file()
-        data_ingestion.extract_zip_file()
+        if not base_dir.exists():
+            data_ingestion.download_file()
+            data_ingestion.extract_zip_file()
 
         train_dir = Path(Path.cwd() / 'artifacts/data_ingestion/dataset/training_data')
         test_dir = Path(Path.cwd() / 'artifacts/data_ingestion/dataset/test_data')
