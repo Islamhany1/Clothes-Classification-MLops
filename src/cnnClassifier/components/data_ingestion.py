@@ -4,8 +4,9 @@ import random
 import shutil
 import zipfile
 import gdown
+from keras.src.legacy.preprocessing.image import ImageDataGenerator
+
 from cnnClassifier import logger
-from cnnClassifier.utils.common import get_size
 from cnnClassifier.entity.config_entity import DataIngestionConfig
 
 
@@ -99,56 +100,9 @@ class DataIngestion:
                     folder.rmdir()
                     print(f"Deleted empty folder: {folder}")
 
-    '''def data_augmentation(self):
 
-        # Define paths to your directories
-        train_dir = Path(Path.cwd() / 'artifacts/data_ingestion/dataset/training_data')
-        test_dir = Path(Path.cwd() / 'artifacts/data_ingestion/dataset/test_data')
-        val_dir = Path(Path.cwd() / 'artifacts/data_ingestion/dataset/validation_data')
 
-        # Define image parameters
-        image_size = (224, 224)  # ResNet typically uses 224x224 image size
-        batch_size = 32
 
-        # Create ImageDataGenerator objects for augmentation and rescaling
 
-        # Augmentation for training data
-        train_datagen = ImageDataGenerator(
-            rescale=1. / 255,  # Normalize pixel values to [0, 1]
-            rotation_range=30,  # Rotate images randomly within 30 degrees
-            width_shift_range=0.2,  # Shift images horizontally by 20% of the width
-            height_shift_range=0.2,  # Shift images vertically by 20% of the height
-            shear_range=0.2,  # Shear angle for augmentation
-            zoom_range=0.2,  # Random zoom into images by 20%
-            horizontal_flip=True,  # Flip images horizontally
-            fill_mode='nearest'  # Fill empty pixels after a transformation
-        )
 
-        # Rescale validation and test data (no augmentation)
-        val_test_datagen = ImageDataGenerator(rescale=1. / 255)
 
-        # Load and augment training data
-        train_generator = train_datagen.flow_from_directory(
-            train_dir,
-            target_size=image_size,  # ResNet expects 224x224 input size
-            batch_size=batch_size,
-            class_mode='categorical'  # Use 'categorical' for multi-class classification
-        )
-
-        # Load validation data (no augmentation)
-        validation_generator = val_test_datagen.flow_from_directory(
-            val_dir,
-            target_size=image_size,
-            batch_size=batch_size,
-            class_mode='categorical'
-        )
-
-        # Load test data (no augmentation)
-        test_generator = val_test_datagen.flow_from_directory(
-            test_dir,
-            target_size=image_size,
-            batch_size=batch_size,
-            class_mode='categorical',
-            shuffle=False  # Don't shuffle test data for accurate results
-        )
-    '''

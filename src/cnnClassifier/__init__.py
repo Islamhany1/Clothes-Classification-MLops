@@ -2,8 +2,8 @@
 # This means that setup.py relies on __init__.py to define the structure of your package and determine what will be available for import when users install your package.
 
 import os
-import sys
 import logging
+import sys
 
 logging_str = "[%(asctime)s: %(levelname)s: %(module)s: %(message)s]"
 
